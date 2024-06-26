@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultra Pro Landing Page</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Add your custom styles here */
+    /* For example: */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75); /* Semi-transparent black background */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Center the popup vertically */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    overflow-y: scroll;
+    
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    .jumbotron {
+      
+      background-size: cover;
+      color: #564cad;
+    }
+    .btn-custom {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .card-text {
+      font-size: 1em;
+    }
+    .btn {
+      border-radius: 25px;
+    }
+    #header {
+    background-image: url('static/img/logo.jpeg');
+   padding: 10vh;
+    background-repeat: no-repeat;
+    height:30vh;
+     background-position: center;
+     background-clip: padding-box;
+    background-size: contain;
+  background-color: #564cad;
+     /* Optional: Set text color to white for better contrast */
+  }
+  </style>
+</head>
+<body>
+  <script>
+      
+    function openPopup() {
+        var popup = document.getElementById('popup-container');
+        var card=document.getElementById('card');
+        popup.style.display = 'block';
+        card.style.display = 'none';
+
+    }
+    
+    function closePopup() {
+        var popup = document.getElementById('popup-container');
+        var card=document.getElementById('card');
+        popup.style.display = 'none';
+        card.style.display = 'block';
+    }
+
+    function openSPopup() {
+      window.location.href = '/signup';
+
+    }
+    
+    function closeSPopup() {
+        var popup = document.getElementById('popup-container-signup');
+        var card=document.getElementById('card');
+        popup.style.display = 'none';
+        card.style.display = 'block';
+    }
+        </script>
+<!-- Navbar -->
+
+  <div class="container-fluid p-4" style="background-color: #564cad;">
+    <center>
+    <img src="static/img/logo.jpeg" width="300px" height="150px" alt="..."></center>
+    <!-- Add more navbar links if needed -->
+  </div>
+  <div id="popup-container-signup" class="popup-container">
+    <div class="popup-content">
+        <span class="close" onclick="closeSPopup()">&times;</span>
+        <h2 class="text-center text-dark">Sign Up</h2>
+        <!-- Your form content goes here -->
+        <form id="login" class="form-group rounded" method="post" action="/signup" enctype="multipart/form-data">
+          <label class="form-label" for="name">Name : </label><br>
+          <input class="form-control" type="text" id="name" name="name"><br>
+        
+          <label class="form-label" for="dept">Department : </label><br>
+          <input class="form-control" type="text" id="dept" name="dept"><br>
+
+          <label class="form-label" for="college">College : </label><br>
+          <input class="form-control" type="text" id="college" name="college"><br>
+
+          <label class="form-label" for="email">Email : </label><br>
+          <input class="form-control" type="email" id="email" name="email"><br>
+
+          <label class="form-label" for="pass">Password : </label><br>
+          <input class="form-control" type="password" id="password" name="password"><br>
+          <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
+        
+    
+    </div>
+  </div>
+
+<div id="popup-container" class="popup-container">
+  <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2 class="text-center text-dark">Login</h2>
+      <!-- Your form content goes here -->
+      <form id="login" class="form-group rounded" method="post" action="/login" enctype="multipart/form-data">
+        <label class="form-label" for="email">E-Mail : </label><br>
+        <input class="form-control" type="email" id="email" name="email"><br>
+      
+        <label class="form-label" for="pass">Password : </label><br>
+        <input class="form-control" type="password" id="password" name="password"><br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+      
+  
+  </div>
+</div>
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center mt-2">
+    <h1 class="display-4">Welcome to Our AI-Based Question Paper Generator</h1>
+    <p class="lead">A productive, modern, and intelligent website designed just for you.</p>
+    <div class="container mt-5" id="card">
+      <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="static/img/ai.jpeg" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title text-primary">AI- Based Software</h5>
+            <p class="card-text  text-dark">This system is powered by AI in order to automate the question generation process. This also helps to ensure the productivity and efficiency of the software.</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="static/img/auto.jpeg" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Automatic Generation</h5>
+            <p class="card-text text-dark">The questions are automatically generated.This helps to save time since manual preparation requires more effort.This eases the work of professors.</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="static/img/do-content-writing-on-various-topics-as-per-the-need.jpg" class="card-img-top p-1" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Variety of Content</h5>
+            <p class="card-text text-dark">This system can generate questions on various topics.This can cover variety of syllabus thereby it helps Professors of various fields.</p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+    <div class="container mt-5">
+      <button onclick="openPopup()" type="submit" class="btn btn-lg btn-custom mr-2">Login</button>
+      <button onclick="openSPopup()" class="btn btn-lg btn-outline-secondary">Sign Up</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-4">
+  <p>&copy; 2024 Your Company. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
